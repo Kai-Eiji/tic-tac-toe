@@ -7,6 +7,14 @@ body {
     padding-left: 30px;
   }
   
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .board-row:after {
     clear: both;
     content: "";
@@ -21,15 +29,15 @@ body {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
+    font-size: 124px;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    line-height: 134px;
+    height: 134px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 134px;
   }
   
   .square:focus {
@@ -55,4 +63,9 @@ body {
 
   .winLine{
       color: red;
+  }
+
+  .list
+  {
+    margin: 5px;
   }
