@@ -1,18 +1,25 @@
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
+    background-image: url("https://image.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg");
+    font: 14px "cursive", Futura, sans-serif;
     margin: 20px;
+  }
+
+  .cursive {
+    font-family: cursive;
   }
   
   ol, ul {
     padding-left: 30px;
+    list-style: none;
   }
   
-.container {
-    height: 100%;
+  .myContainer
+  {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 30%;
   }
 
   .board-row:after {
@@ -24,9 +31,18 @@ body {
   .status {
     margin-bottom: 10px;
   }
+
+  .title
+  {
+    font-family: cursive;
+    color: blue;
+    text-align: center;
+    font-size: 100px;
+    margin: 0%;
+  }
   
   .square {
-    background: #fff;
+    
     border: 1px solid #999;
     float: left;
     font-size: 124px;
@@ -38,6 +54,7 @@ body {
     padding: 0;
     text-align: center;
     width: 134px;
+    font-family: cursive;
   }
   
   .square:focus {
@@ -54,7 +71,7 @@ body {
   }
   
   .game-info {
-    margin-left: 20px;
+    margin-left: -20px;
   }
 
   .bold{
@@ -69,3 +86,13 @@ body {
   {
     margin: 5px;
   }
+
+  .status
+  {
+    margin-left: 40%;
+    font-family: cursive;
+    font-size: 45px;
+  }
+
+  
+  

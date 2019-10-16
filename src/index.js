@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Square(props){
@@ -166,21 +167,16 @@ function Square(props){
 
       let aveSpots = arr;
 
-      console.log("aveSpots : ", aveSpots);
-
       if(calculateWinner(squares) && calculateWinner(squares).side === 'X')
       {
-        console.log("winnner X");
         return {score: -10};
       }
       else if(calculateWinner(squares) && calculateWinner(squares).side === 'O')
       {
-        console.log("winnner O");
         return {score: 10};
       }
       else if(aveSpots.length===0)
       {
-        console.log("Tie Game");
         return {score: 0};
       }
 
@@ -249,27 +245,36 @@ function Square(props){
             let desc;
             
 
-            // if(move % 2 === 1)
-            // {
-              const moveHistory = 'Go to move # '+ (move) + ' (row: '+row+' col: '+col+')';
+            if(move % 2 === 0)
+            {
+              const moveHistory = 'Go to move # '+ (move/2) + ' (row: '+row+' col: '+col+')';
               desc = move ? moveHistory  : 'Go to game start';
-            //}
+            }
             
-            
-            if(move === this.state.stepNumber){
-                return( // it returns a value for every element in the 'history Array
+            if(move === 0)
+            {
+              return( // it returns a value for every element in the 'history Array
                 <div className="list">
-                  <li key={move}>
-                      <button className='bold' onClick={() => this.jumpTo(move)}>{desc}</button>
+                   <li key={move} > 
+                      <button className="btn btn-danger" onClick={() => this.jumpTo(move)}>{desc}</button>
                   </li>
                 </div>
               );
             }
-            else {
+            else if(move === this.state.stepNumber && move % 2 === 0){
                 return( // it returns a value for every element in the 'history Array
                 <div className="list">
-                  <li key={move}>
-                      <button clasName="list" onClick={() => this.jumpTo(move)}>{desc}</button>
+                   <li key={move} > 
+                      <button className="bold btn btn-primary" onClick={() => this.jumpTo(move)}>{desc}</button>
+                  </li>
+                </div>
+              );
+            }
+            else if(move % 2 === 0) {
+                return( // it returns a value for every element in the 'history Array
+                <div className="list">
+                  <li key={move} >
+                      <button clasName="list" className="btn btn-primary" onClick={() => this.jumpTo(move)}>{desc}</button>
                   </li>
                 </div>
               );
@@ -280,10 +285,24 @@ function Square(props){
         let status;
         let winLine;
         
+        
         if(winner){
             status = 'winner: '+winner.side;
             winLine = winner.nums;
             console.log(winLine);
+        }
+
+        let tieGame = false;
+        let check = true;
+        for(let i = 0; i < squares.length; i++)
+        {
+          if(!squares[i]){check = false;}
+        }
+        if(check && !winner){tieGame = true;}
+
+        if(tieGame)
+        {
+          status = "It's a Tie Game"
         }
 
         
@@ -295,7 +314,9 @@ function Square(props){
         }
         
       return (
-        <div className="container">
+        <div >
+        <h1 className="title">Tic Tac Toe</h1>
+        <div className="myContainer">
           <div className="game">
             <div className="game-board">
               <Board 
@@ -305,10 +326,12 @@ function Square(props){
                   winLine={winLine}/> {/*passin down the handle click function to 'Board  */}
             </div>
             <div className="game-info">
-              <div>{status}</div>
+              
               <ol>{moves}</ol>
             </div>
           </div>
+        </div>
+          <div className="status">{status}</div>
         </div>
         
       );
